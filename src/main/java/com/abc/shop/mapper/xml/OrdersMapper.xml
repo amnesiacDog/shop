@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abc.shop.dao.OrdersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.abc.shop.entity.Orders">
+        <id column="id" property="id" />
+        <result column="totleprice" property="totleprice" />
+        <result column="pay_Time" property="payTime" />
+        <result column="status" property="status" />
+        <result column="pay_Type" property="payType" />
+        <result column="pay_Id" property="payId" />
+        <result column="created_Time" property="createdTime" />
+        <result column="adress_id" property="adressId" />
+        <result column="users_id" property="usersId" />
+    </resultMap>
+
+</mapper>

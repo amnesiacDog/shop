@@ -1,17 +1,16 @@
 package com.abc.shop.dao;
 
 import com.abc.shop.entity.Logistics;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface LogisticsMapper {
-    int deleteByPrimaryKey(Integer ordersId);
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public interface LogisticsMapper extends BaseMapper<Logistics> {
 
-    int insert(Logistics record);
-
-    int insertSelective(Logistics record);
-
-    Logistics selectByPrimaryKey(Integer ordersId);
-
-    int updateByPrimaryKeySelective(Logistics record);
-
-    int updateByPrimaryKey(Logistics record);
 }

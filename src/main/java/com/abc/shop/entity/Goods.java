@@ -1,6 +1,19 @@
 package com.abc.shop.entity;
 
-public class Goods {
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public class Goods implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
     private Integer id;
 
     private String name;
@@ -11,17 +24,6 @@ public class Goods {
 
     private Integer goodsTypeId;
 
-    public Goods(Integer id, String name, String description, Integer price, Integer goodsTypeId) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.goodsTypeId = goodsTypeId;
-    }
-
-    public Goods() {
-        super();
-    }
 
     public Integer getId() {
         return id;
@@ -36,7 +38,7 @@ public class Goods {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getDescription() {
@@ -44,7 +46,7 @@ public class Goods {
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
     }
 
     public Integer getPrice() {
@@ -61,5 +63,16 @@ public class Goods {
 
     public void setGoodsTypeId(Integer goodsTypeId) {
         this.goodsTypeId = goodsTypeId;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+        "id=" + id +
+        ", name=" + name +
+        ", description=" + description +
+        ", price=" + price +
+        ", goodsTypeId=" + goodsTypeId +
+        "}";
     }
 }

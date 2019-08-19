@@ -1,18 +1,16 @@
 package com.abc.shop.dao;
 
 import com.abc.shop.entity.Comment;
-import com.abc.shop.entity.CommentKey;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface CommentMapper {
-    int deleteByPrimaryKey(CommentKey key);
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public interface CommentMapper extends BaseMapper<Comment> {
 
-    int insert(Comment record);
-
-    int insertSelective(Comment record);
-
-    Comment selectByPrimaryKey(CommentKey key);
-
-    int updateByPrimaryKeySelective(Comment record);
-
-    int updateByPrimaryKey(Comment record);
 }

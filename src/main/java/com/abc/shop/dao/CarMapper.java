@@ -1,18 +1,16 @@
 package com.abc.shop.dao;
 
 import com.abc.shop.entity.Car;
-import com.abc.shop.entity.CarKey;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface CarMapper {
-    int deleteByPrimaryKey(CarKey key);
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public interface CarMapper extends BaseMapper<Car> {
 
-    int insert(Car record);
-
-    int insertSelective(Car record);
-
-    Car selectByPrimaryKey(CarKey key);
-
-    int updateByPrimaryKeySelective(Car record);
-
-    int updateByPrimaryKey(Car record);
 }

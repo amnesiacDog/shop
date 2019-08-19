@@ -1,13 +1,28 @@
 package com.abc.shop.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
 
-public class Logistics {
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public class Logistics implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
     private Integer ordersId;
 
-    private Date estimatereceiveTime;
+    @TableField("estimatereceive_Time")
+    private LocalDate estimatereceiveTime;
 
-    private Date receivingTime;
+    @TableField("receiving_Time")
+    private LocalDate receivingTime;
 
     private String name;
 
@@ -15,18 +30,6 @@ public class Logistics {
 
     private String status;
 
-    public Logistics(Integer ordersId, Date estimatereceiveTime, Date receivingTime, String name, String phone, String status) {
-        this.ordersId = ordersId;
-        this.estimatereceiveTime = estimatereceiveTime;
-        this.receivingTime = receivingTime;
-        this.name = name;
-        this.phone = phone;
-        this.status = status;
-    }
-
-    public Logistics() {
-        super();
-    }
 
     public Integer getOrdersId() {
         return ordersId;
@@ -36,19 +39,19 @@ public class Logistics {
         this.ordersId = ordersId;
     }
 
-    public Date getEstimatereceiveTime() {
+    public LocalDate getEstimatereceiveTime() {
         return estimatereceiveTime;
     }
 
-    public void setEstimatereceiveTime(Date estimatereceiveTime) {
+    public void setEstimatereceiveTime(LocalDate estimatereceiveTime) {
         this.estimatereceiveTime = estimatereceiveTime;
     }
 
-    public Date getReceivingTime() {
+    public LocalDate getReceivingTime() {
         return receivingTime;
     }
 
-    public void setReceivingTime(Date receivingTime) {
+    public void setReceivingTime(LocalDate receivingTime) {
         this.receivingTime = receivingTime;
     }
 
@@ -57,7 +60,7 @@ public class Logistics {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getPhone() {
@@ -65,7 +68,7 @@ public class Logistics {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getStatus() {
@@ -73,6 +76,18 @@ public class Logistics {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Logistics{" +
+        "ordersId=" + ordersId +
+        ", estimatereceiveTime=" + estimatereceiveTime +
+        ", receivingTime=" + receivingTime +
+        ", name=" + name +
+        ", phone=" + phone +
+        ", status=" + status +
+        "}";
     }
 }

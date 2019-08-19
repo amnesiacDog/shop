@@ -1,8 +1,24 @@
 package com.abc.shop.entity;
 
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
 
-public class Users {
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public class Users implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String usersname;
@@ -13,29 +29,17 @@ public class Users {
 
     private String phone;
 
+    @TableField("login_Status")
     private Integer loginStatus;
 
     private String img;
 
-    private Date createdTime;
+    @TableField("created_Time")
+    private LocalDate createdTime;
 
-    private Date modifiedTime;
+    @TableField("modified_Time")
+    private LocalDate modifiedTime;
 
-    public Users(Integer id, String usersname, String password, String salt, String phone, Integer loginStatus, String img, Date createdTime, Date modifiedTime) {
-        this.id = id;
-        this.usersname = usersname;
-        this.password = password;
-        this.salt = salt;
-        this.phone = phone;
-        this.loginStatus = loginStatus;
-        this.img = img;
-        this.createdTime = createdTime;
-        this.modifiedTime = modifiedTime;
-    }
-
-    public Users() {
-        super();
-    }
 
     public Integer getId() {
         return id;
@@ -50,7 +54,7 @@ public class Users {
     }
 
     public void setUsersname(String usersname) {
-        this.usersname = usersname == null ? null : usersname.trim();
+        this.usersname = usersname;
     }
 
     public String getPassword() {
@@ -58,7 +62,7 @@ public class Users {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public String getSalt() {
@@ -66,7 +70,7 @@ public class Users {
     }
 
     public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
+        this.salt = salt;
     }
 
     public String getPhone() {
@@ -74,7 +78,7 @@ public class Users {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public Integer getLoginStatus() {
@@ -90,22 +94,37 @@ public class Users {
     }
 
     public void setImg(String img) {
-        this.img = img == null ? null : img.trim();
+        this.img = img;
     }
 
-    public Date getCreatedTime() {
+    public LocalDate getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Date createdTime) {
+    public void setCreatedTime(LocalDate createdTime) {
         this.createdTime = createdTime;
     }
 
-    public Date getModifiedTime() {
+    public LocalDate getModifiedTime() {
         return modifiedTime;
     }
 
-    public void setModifiedTime(Date modifiedTime) {
+    public void setModifiedTime(LocalDate modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+        "id=" + id +
+        ", usersname=" + usersname +
+        ", password=" + password +
+        ", salt=" + salt +
+        ", phone=" + phone +
+        ", loginStatus=" + loginStatus +
+        ", img=" + img +
+        ", createdTime=" + createdTime +
+        ", modifiedTime=" + modifiedTime +
+        "}";
     }
 }

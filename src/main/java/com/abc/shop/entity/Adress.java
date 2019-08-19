@@ -1,8 +1,23 @@
 package com.abc.shop.entity;
 
-public class Adress {
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public class Adress implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
     private Integer id;
 
+    @TableField("adress_Description")
     private String adressDescription;
 
     private String phone;
@@ -11,26 +26,13 @@ public class Adress {
 
     private String location;
 
+    @TableField("is_Default")
     private String isDefault;
 
-    private Byte adresscol;
+    private Integer adresscol;
 
     private Integer usersId;
 
-    public Adress(Integer id, String adressDescription, String phone, String consignename, String location, String isDefault, Byte adresscol, Integer usersId) {
-        this.id = id;
-        this.adressDescription = adressDescription;
-        this.phone = phone;
-        this.consignename = consignename;
-        this.location = location;
-        this.isDefault = isDefault;
-        this.adresscol = adresscol;
-        this.usersId = usersId;
-    }
-
-    public Adress() {
-        super();
-    }
 
     public Integer getId() {
         return id;
@@ -45,7 +47,7 @@ public class Adress {
     }
 
     public void setAdressDescription(String adressDescription) {
-        this.adressDescription = adressDescription == null ? null : adressDescription.trim();
+        this.adressDescription = adressDescription;
     }
 
     public String getPhone() {
@@ -53,7 +55,7 @@ public class Adress {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getConsignename() {
@@ -61,7 +63,7 @@ public class Adress {
     }
 
     public void setConsignename(String consignename) {
-        this.consignename = consignename == null ? null : consignename.trim();
+        this.consignename = consignename;
     }
 
     public String getLocation() {
@@ -69,7 +71,7 @@ public class Adress {
     }
 
     public void setLocation(String location) {
-        this.location = location == null ? null : location.trim();
+        this.location = location;
     }
 
     public String getIsDefault() {
@@ -77,14 +79,14 @@ public class Adress {
     }
 
     public void setIsDefault(String isDefault) {
-        this.isDefault = isDefault == null ? null : isDefault.trim();
+        this.isDefault = isDefault;
     }
 
-    public Byte getAdresscol() {
+    public Integer getAdresscol() {
         return adresscol;
     }
 
-    public void setAdresscol(Byte adresscol) {
+    public void setAdresscol(Integer adresscol) {
         this.adresscol = adresscol;
     }
 
@@ -94,5 +96,19 @@ public class Adress {
 
     public void setUsersId(Integer usersId) {
         this.usersId = usersId;
+    }
+
+    @Override
+    public String toString() {
+        return "Adress{" +
+        "id=" + id +
+        ", adressDescription=" + adressDescription +
+        ", phone=" + phone +
+        ", consignename=" + consignename +
+        ", location=" + location +
+        ", isDefault=" + isDefault +
+        ", adresscol=" + adresscol +
+        ", usersId=" + usersId +
+        "}";
     }
 }

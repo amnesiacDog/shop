@@ -15,6 +15,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   mapper-locations:
     classpath:/mapper/*.xml
+  type-aliases-package: com.abc.shop.dao
 
 #server
 server:

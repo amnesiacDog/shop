@@ -1,29 +1,44 @@
 package com.abc.shop.entity;
 
-public class Comment extends CommentKey {
+import java.io.Serializable;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public class Comment implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
     private String description;
+
+    private Integer goodsId;
 
     private Integer score;
 
-    private Byte isAnonymous;
+    private Integer userId;
 
-    public Comment(Integer goodsId, Integer userId, String description, Integer score, Byte isAnonymous) {
-        super(goodsId, userId);
-        this.description = description;
-        this.score = score;
-        this.isAnonymous = isAnonymous;
-    }
+    private Integer isAnonymous;
 
-    public Comment() {
-        super();
-    }
 
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
+    }
+
+    public Integer getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
     public Integer getScore() {
@@ -34,11 +49,30 @@ public class Comment extends CommentKey {
         this.score = score;
     }
 
-    public Byte getIsAnonymous() {
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getIsAnonymous() {
         return isAnonymous;
     }
 
-    public void setIsAnonymous(Byte isAnonymous) {
+    public void setIsAnonymous(Integer isAnonymous) {
         this.isAnonymous = isAnonymous;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+        "description=" + description +
+        ", goodsId=" + goodsId +
+        ", score=" + score +
+        ", userId=" + userId +
+        ", isAnonymous=" + isAnonymous +
+        "}";
     }
 }

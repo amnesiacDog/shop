@@ -2,21 +2,15 @@ package com.abc.shop.dao;
 
 import com.abc.shop.entity.Users;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
 
-@Mapper
-@Component
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
 public interface UsersMapper extends BaseMapper<Users> {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Users record);
-
-    int insertSelective(Users record);
-
-    Users selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Users record);
-
-    int updateByPrimaryKey(Users record);
 }

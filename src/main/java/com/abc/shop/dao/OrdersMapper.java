@@ -1,17 +1,16 @@
 package com.abc.shop.dao;
 
 import com.abc.shop.entity.Orders;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface OrdersMapper {
-    int deleteByPrimaryKey(Integer id);
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author mjk
+ * @since 2019-08-19
+ */
+public interface OrdersMapper extends BaseMapper<Orders> {
 
-    int insert(Orders record);
-
-    int insertSelective(Orders record);
-
-    Orders selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Orders record);
-
-    int updateByPrimaryKey(Orders record);
 }

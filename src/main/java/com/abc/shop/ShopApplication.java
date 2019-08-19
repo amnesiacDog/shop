@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
+@MapperScan("com.abc.shop.dao")
 public class ShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopApplication.class, args);
