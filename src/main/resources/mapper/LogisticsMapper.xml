@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.abc.shop.dao.LogisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.abc.shop.entity.Logistics" >
+    <constructor >
+      <idArg column="orders_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="estimatereceive_Time" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="receiving_Time" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="status" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    orders_id, estimatereceive_Time, receiving_Time, name, phone, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from logistics
+    where orders_id = #{ordersId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from logistics
+    where orders_id = #{ordersId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.abc.shop.entity.Logistics" >
+    insert into logistics (orders_id, estimatereceive_Time, receiving_Time, 
+      name, phone, status
+      )
+    values (#{ordersId,jdbcType=INTEGER}, #{estimatereceiveTime,jdbcType=DATE}, #{receivingTime,jdbcType=DATE}, 
+      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.abc.shop.entity.Logistics" >
+    insert into logistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ordersId != null" >
+        orders_id,
+      </if>
+      <if test="estimatereceiveTime != null" >
+        estimatereceive_Time,
+      </if>
+      <if test="receivingTime != null" >
+        receiving_Time,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ordersId != null" >
+        #{ordersId,jdbcType=INTEGER},
+      </if>
+      <if test="estimatereceiveTime != null" >
+        #{estimatereceiveTime,jdbcType=DATE},
+      </if>
+      <if test="receivingTime != null" >
+        #{receivingTime,jdbcType=DATE},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.abc.shop.entity.Logistics" >
+    update logistics
+    <set >
+      <if test="estimatereceiveTime != null" >
+        estimatereceive_Time = #{estimatereceiveTime,jdbcType=DATE},
+      </if>
+      <if test="receivingTime != null" >
+        receiving_Time = #{receivingTime,jdbcType=DATE},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orders_id = #{ordersId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.abc.shop.entity.Logistics" >
+    update logistics
+    set estimatereceive_Time = #{estimatereceiveTime,jdbcType=DATE},
+      receiving_Time = #{receivingTime,jdbcType=DATE},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where orders_id = #{ordersId,jdbcType=INTEGER}
+  </update>
+</mapper>

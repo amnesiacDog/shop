@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.abc.shop.dao.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.abc.shop.entity.Comment" >
+    <constructor >
+      <idArg column="goods_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="is_anonymous" jdbcType="TINYINT" javaType="java.lang.Byte" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goods_id, user_id, description, score, is_anonymous
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.abc.shop.entity.CommentKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.abc.shop.entity.CommentKey" >
+    delete from comment
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.abc.shop.entity.Comment" >
+    insert into comment (goods_id, user_id, description, 
+      score, is_anonymous)
+    values (#{goodsId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{score,jdbcType=INTEGER}, #{isAnonymous,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.abc.shop.entity.Comment" >
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="isAnonymous != null" >
+        is_anonymous,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="isAnonymous != null" >
+        #{isAnonymous,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.abc.shop.entity.Comment" >
+    update comment
+    <set >
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="isAnonymous != null" >
+        is_anonymous = #{isAnonymous,jdbcType=TINYINT},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.abc.shop.entity.Comment" >
+    update comment
+    set description = #{description,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      is_anonymous = #{isAnonymous,jdbcType=TINYINT}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

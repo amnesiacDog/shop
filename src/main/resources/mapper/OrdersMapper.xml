@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.abc.shop.dao.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.abc.shop.entity.Orders" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totleprice" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pay_Time" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pay_Type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pay_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="created_Time" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="adress_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="users_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, totleprice, pay_Time, status, pay_Type, pay_Id, created_Time, adress_id, users_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.abc.shop.entity.Orders" >
+    insert into orders (id, totleprice, pay_Time, 
+      status, pay_Type, pay_Id, 
+      created_Time, adress_id, users_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{totleprice,jdbcType=VARCHAR}, #{payTime,jdbcType=DATE}, 
+      #{status,jdbcType=INTEGER}, #{payType,jdbcType=VARCHAR}, #{payId,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=DATE}, #{adressId,jdbcType=INTEGER}, #{usersId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.abc.shop.entity.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="totleprice != null" >
+        totleprice,
+      </if>
+      <if test="payTime != null" >
+        pay_Time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="payType != null" >
+        pay_Type,
+      </if>
+      <if test="payId != null" >
+        pay_Id,
+      </if>
+      <if test="createdTime != null" >
+        created_Time,
+      </if>
+      <if test="adressId != null" >
+        adress_id,
+      </if>
+      <if test="usersId != null" >
+        users_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="totleprice != null" >
+        #{totleprice,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null" >
+        #{payId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=DATE},
+      </if>
+      <if test="adressId != null" >
+        #{adressId,jdbcType=INTEGER},
+      </if>
+      <if test="usersId != null" >
+        #{usersId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.abc.shop.entity.Orders" >
+    update orders
+    <set >
+      <if test="totleprice != null" >
+        totleprice = #{totleprice,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        pay_Time = #{payTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_Type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payId != null" >
+        pay_Id = #{payId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_Time = #{createdTime,jdbcType=DATE},
+      </if>
+      <if test="adressId != null" >
+        adress_id = #{adressId,jdbcType=INTEGER},
+      </if>
+      <if test="usersId != null" >
+        users_id = #{usersId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.abc.shop.entity.Orders" >
+    update orders
+    set totleprice = #{totleprice,jdbcType=VARCHAR},
+      pay_Time = #{payTime,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      pay_Type = #{payType,jdbcType=VARCHAR},
+      pay_Id = #{payId,jdbcType=VARCHAR},
+      created_Time = #{createdTime,jdbcType=DATE},
+      adress_id = #{adressId,jdbcType=INTEGER},
+      users_id = #{usersId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

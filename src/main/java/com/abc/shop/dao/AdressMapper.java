@@ -1,0 +1,17 @@
+package com.abc.shop.dao;
+
+import com.abc.shop.entity.Adress;
+
+public interface AdressMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Adress record);
+
+    int insertSelective(Adress record);
+
+    Adress selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(Adress record);
+
+    int updateByPrimaryKey(Adress record);
+}

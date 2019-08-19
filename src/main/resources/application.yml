@@ -4,17 +4,17 @@ spring:
     url: jdbc:mysql:///dsxcj?serverTimezone=GMT
     username: root
     password: root
-  thymeleaf:
-    prefix: classpath:/#等前端
-    suffix: .html
+#  thymeleaf:
+#    prefix: classpath:/#等前端
+#    suffix: .html
 
 #mybatis
-mybatis:
+mybatis-plus:
   configuration:
     default-statement-timeout: 30
     map-underscore-to-camel-case: true
   mapper-locations:
-    - classpath:/mapper/sys/*.xml
+    classpath:/mapper/*.xml
 
 #server
 server:
@@ -27,4 +27,4 @@ server:
 #LOG
 logging:
   level:
-    com.mjk: DEBUG
+    com.abc: DEBUG
